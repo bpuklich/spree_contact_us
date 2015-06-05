@@ -20,4 +20,7 @@ SpreeContactUs.setup do |config|
   # Configure the form to ask for a subject.
   config.require_subject = false
 
+  # Show sidebar?
+  config.show_sidebar = false
+
 end
