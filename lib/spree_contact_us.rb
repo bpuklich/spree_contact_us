@@ -16,6 +16,9 @@ module SpreeContactUs
   # Enable or Disable subject field.
   mattr_accessor :require_subject
 
+  # Enable or Disable the sidebar.
+  mattr_accessor :show_sidebar
+
   # Default way to setup ContactUs. Run rake contact_us:install to create
   # a fresh initializer with all configuration values.
   def self.setup
