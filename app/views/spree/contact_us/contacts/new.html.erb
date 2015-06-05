@@ -13,32 +13,40 @@
 <% end %>
 
 <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @contact } %>
+<div class="col-md-8 col-md-offset-2">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h1 class="panel-title"><%= Spree.t(:contact_us_title) %></h1>
+    </div>
+    <div class="panel-body">
+      <%= form_for @contact, :url => contacts_path, :html => { :novalidate => '' } do |f| %>
+        <div class="form-group">
+          <%= f.label :name do %>
+            <%= Spree.t(:name) %><% if SpreeContactUs.require_name %><span class="required">*</span><% end %>
+          <% end %>
+          <%= f.text_field :name, class: "form-control#{SpreeContactUs.require_name ? ' required' : ''}", placeholder: Spree.t(:name) %>
+        </div>
+        <div class="form-group">
+          <%= f.label :email do %>
+            <%= Spree.t(:email) %><span class="required">*</span>
+          <% end %>
+          <%= f.email_field :email, class: 'form-control email required', placeholder: Spree.t(:email) %>
+        </div>
+        <div class="form-group">
+          <%= f.label :subject do %>
+            <%= Spree.t('activemodel.attributes.contact_us/contact.subject') %><% if SpreeContactUs.require_subject %><span class="required">*</span><% end %>
+          <% end %>
+          <%= f.text_field :subject, class: "form-control#{SpreeContactUs.require_subject ? ' required' : ''}", placeholder: Spree.t('activemodel.attributes.contact_us/contact.subject') %>
+        </div>
+        <div class="form-group">
+          <%= f.label :message do %>
+            <%= Spree.t(:message) %><span class="required">*</span>
+          <% end %>
+          <%= f.text_area :message, class: 'form-control required', placeholder: "Enter your question here", rows: 5 %>
+        </div>
+        <%= f.button Spree.t(:submit), :class => 'btn btn-lg btn-success btn-block', :alt => Spree.t(:submit), :id => 'contact_us_contact_submit', :title => Spree.t(:submit) %>
+      <% end %>
+    </div>
 
-<h1><%= Spree.t(:contact_us_title) %></h1>
-<%= form_for @contact, :url => contacts_path, :html => { :novalidate => '' } do |f| %>
-  <div class="form-group">
-    <%= f.label :name do %>
-      <%= Spree.t(:name) %><% if SpreeContactUs.require_name %><span class="required">*</span><% end %>
-    <% end %>
-    <%= f.text_field :name, class: "form-control#{SpreeContactUs.require_name ? ' required' : ''}", placeholder: Spree.t(:name) %>
   </div>
-  <div class="form-group">
-    <%= f.label :email do %>
-      <%= Spree.t(:email) %><span class="required">*</span>
-    <% end %>
-    <%= f.email_field :email, class: 'form-control email required', placeholder: Spree.t(:email) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :subject do %>
-        <%= Spree.t(:'activemodel.attributes.contact_us/contact.subject') %><% if SpreeContactUs.require_subject %><span class="required">*</span><% end %>
-    <% end %>
-    <%= f.text_field :subject, class: "form-control#{SpreeContactUs.require_subject ? ' required' : ''}", placeholder: Spree.t(:'activemodel.attributes.contact_us/contact.subject') %>
-  </div>
-  <div class="form-group">
-    <%= f.label :message do %>
-        <%= Spree.t(:message) %><span class="required">*</span>
-    <% end %>
-    <%= f.text_area :message, class: 'form-control required', placeholder: "Enter your question here", rows: 5 %>
-  </div>
-  <%= f.button Spree.t(:submit), :class => 'btn btn-success', :alt => Spree.t(:submit), :id => 'contact_us_contact_submit', :title => Spree.t(:submit) %>
-<% end %>
+</div>
