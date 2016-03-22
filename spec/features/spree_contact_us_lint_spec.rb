@@ -20,9 +20,9 @@ describe 'Contact Us page', js: true do
     within "form#new_contact_us_contact" do
       page.should have_selector "input#contact_us_contact_email"
       page.should have_selector "textarea#contact_us_contact_message"
-      page.should_not have_selector "input#contact_us_contact_name"
-      page.should_not have_selector "input#contact_us_contact_subject"
-      page.should have_selector "input#contact_us_contact_submit"
+      page.should have_selector "input#contact_us_contact_name"
+      page.should have_selector "input#contact_us_contact_subject"
+      page.should have_selector "button#contact_us_contact_submit"
     end
   end
 
