@@ -15,4 +15,5 @@ spec/dummy
 .generators
 .ruby-gemset
 .ruby-version
-spree_contact_us.iml
+*.iml
+.rakeTasks
